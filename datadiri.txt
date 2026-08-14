@@ -1,3 +1,5 @@
 Nama: Krisna Guntur Pamungkas
 Prodi: Informatika
 Instansi: UMSIDA
+Jenis Kelamin: Laki-Laki
+

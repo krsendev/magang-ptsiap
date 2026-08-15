@@ -1,0 +1,276 @@
+{
+  "info": {
+    "_postman_id": "99464def-2658-4a08-84a1-1da783cc3f45",
+    "name": "Ronde Sabotase (Postman Echo)",
+    "description": "Ronde sabotase HTTP menggunakan Postman Echo sebagai API target. Setiap request sengaja dirusak dan memiliki test otomatis yang menentukan PASS/FAIL berdasarkan request yang diterima Echo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55591207",
+    "_collection_link": "https://go.postman.co/collection/55591207-99464def-2658-4a08-84a1-1da783cc3f45?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01 - JSON dengan Content-Type Salah",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const ct = pm.response.json().headers['content-type'] || '';",
+              "pm.test('Content-Type harus application/json', function () {",
+              "    pm.expect(ct.toLowerCase()).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"peserta\",\n    \"score\": 100\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://postman-echo.com/post",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "02 - Bearer Token di Query Parameter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const data = pm.response.json();",
+              "pm.test('Bearer token harus berada di Authorization header', function () {",
+              "    pm.expect(data.headers).to.have.property('authorization');",
+              "    pm.expect(data.headers.authorization).to.match(/^Bearer\\s+\\S+/);",
+              "});",
+              "pm.test('Token tidak boleh berada di query parameter', function () {",
+              "    pm.expect(data.args).to.not.have.property('access_token');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://postman-echo.com/get?access_token={{token}}",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "03 - POST ke Endpoint GET",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Method harus GET', function () {",
+              "    pm.expect(pm.request.method).to.eql('GET');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "https://postman-echo.com/get",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "04 - HTTP Padahal Wajib HTTPS",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Protocol harus HTTPS', function () {",
+              "    pm.expect(pm.request.url.protocol).to.eql('https');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://postman-echo.com/get",
+          "protocol": "http",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "05 - JSON dengan Koma Berlebih",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Intentionally left blank. The malformed JSON is the sabotage."
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "let parsed = true;",
+              "try {",
+              "    JSON.parse(pm.request.body.raw);",
+              "} catch (e) {",
+              "    parsed = false;",
+              "}",
+              "pm.test('Request body harus JSON valid', function () {",
+              "    pm.expect(parsed).to.eql(true);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"peserta\",\n  \"score\": 100,\n}"
+        },
+        "url": {
+          "raw": "https://postman-echo.com/post",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "06 - Header Authorization Salah Nama",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const data = pm.response.json();",
+              "pm.test('Header harus bernama Authorization', function () {",
+              "    pm.expect(data.headers).to.have.property('authorization');",
+              "});",
+              "pm.test('Authorization harus menggunakan Bearer token', function () {",
+              "    pm.expect(data.headers.authorization).to.match(/^Bearer\\s+\\S+/);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorisasion",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "https://postman-echo.com/get",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "BOSS-BATTLE-DEMO-TOKEN"
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "info": {
+    "_postman_id": "52627825-d016-4f2c-9d0f-88d71c4ccc9c",
+    "name": "Boss Battle (07-06-2026)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55591207",
+    "_collection_link": "https://go.postman.co/collection/55591207-52627825-d016-4f2c-9d0f-88d71c4ccc9c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Bagian A - Baca",
+      "item": [
+        {
+          "name": "1. 10 produk pertama",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer KyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3ODYwMDcxNjgsImV4cCI6MTc4NjAxMDc2OH0.xYxxmQGTdnvm-bcYC3W6t4NZ2QIwyDIl-fH8GrtDKl0",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://dummyjson.com/products?limit=10",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Mengambil data 10 produk pertama (id: 1 s.d. id: 10) menggunakan parameter limit."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Produk ke-21 s.d 30 (pagination)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dummyjson.com/products?limit=10&skip=20",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "skip",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Mengambil data produk dengan id: 21 s.d. id: 30 menggunakan parameter limit dan skip."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Cari produk mengandung \"phone\"",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dummyjson.com/products/search?q=phone",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "phone"
+                }
+              ]
+            },
+            "description": "Mengambil data produk yang mengandung kata \"phone\" dengan memanfaatkan parameter 'q'."
+          },
+          "response": []
+        },
+        {
+          "name": "4. Semua kategori",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dummyjson.com/products/categories",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "categories"
+              ]
+            },
+            "description": "Mengambil data semua kategori pada endpoint /products/categories"
+          },
+          "response": []
+        },
+        {
+          "name": "5. Semua produk dalam satu kategori",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dummyjson.com/products/category/tablets",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "category",
+                "tablets"
+              ]
+            },
+            "description": "Mengambil semua data produk dalam satu kategori tertentu."
+          },
+          "response": []
+        },
+        {
+          "name": "6. Ambil hanya kolom title dan price",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dummyjson.com/products?select=title,price",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "select",
+                  "value": "title,price"
+                }
+              ]
+            },
+            "description": "Mengambil data pada kolom 'title' dan 'price' dengan memanfaatkan parameter select."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bagian B - Tulis",
+      "item": [
+        {
+          "name": "7. Buat Produk",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\" : \"macbook\",\n    \"price\" : 15000000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/products/add",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "add"
+              ]
+            },
+            "description": "Uji coba membuat data produk baru."
+          },
+          "response": []
+        },
+        {
+          "name": "8. Perbarui harga",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"price\" : \"20000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/products/101",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "101"
+              ]
+            },
+            "description": "Uji coba merubah harga pada data produk."
+          },
+          "response": []
+        },
+        {
+          "name": "9. Ganti seluruh produk",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\" : \"Redmi Note 17\",\n    \"price\" : 99999999,\n    \"brand\" : \"Xiaomi\",\n    \"category\" : \"smartphones\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/products/101",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "101"
+              ]
+            },
+            "description": "Uji coba mengubah seluruh data dalam satu produk."
+          },
+          "response": []
+        },
+        {
+          "name": "10. Hapus produk",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://dummyjson.com/products/101",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "products",
+                "101"
+              ]
+            },
+            "description": "Uji coba melakukan penghapusan data produk."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bagian C - Autentikasi",
+      "item": [
+        {
+          "name": "11. Login, ambil token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"emilys\",\n    \"password\": \"emilyspass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/auth/login",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Uji coba melakukan login untuk mendapatkan token."
+          },
+          "response": []
+        },
+        {
+          "name": "12. Akses endpoint berautentikasi",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3ODYwODUyMTQsImV4cCI6MTc4NjA4ODgxNH0.ZRL8vSgPhJ2AQUYOEIg2r6t7DwIwjngMrph--qisv6M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://dummyjson.com/auth/me",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            },
+            "description": "Uji coba mengakses endpoint yang berautentikasi untuk membuktikan token yang didapatkan sebelumnya valid."
+          },
+          "response": []
+        },
+        {
+          "name": "13. Environment Postman dengan variabel token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://dummyjson.com/auth/me",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            },
+            "description": "Uji coba memanfaatkan environtment pada postman dan membuat variabel baru. Bisa dilihat di Headers."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bonus Poin",
+      "item": [
+        {
+          "name": "Simpan token otomatis",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const tokenData = JSON.parse(pm.response.text());",
+                  "pm.environment.set(\"token\", tokenData.accessToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"emilys\",\n    \"password\": \"emilyspass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/auth/login",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Coba membuat sebuah script agar saat melakukan login tokennya bisa otomatis tersimpan di variabel yang ada di environtment."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

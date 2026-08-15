@@ -1,0 +1,596 @@
+{
+  "info": {
+    "_postman_id": "601c6677-e5dd-4ec5-ac95-652a70bc5d55",
+    "name": "Latihan HTTP - Krisna",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55591207",
+    "_collection_link": "https://go.postman.co/collection/55591207-601c6677-e5dd-4ec5-ac95-652a70bc5d55?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/get",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "get"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "tes-query-parameter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/get?nama=krisna&program=python&kota=sidoarjo&prodi=informatika&instansi=umsida",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "nama",
+                  "value": "krisna"
+                },
+                {
+                  "key": "program",
+                  "value": "python"
+                },
+                {
+                  "key": "kota",
+                  "value": "sidoarjo"
+                },
+                {
+                  "key": "prodi",
+                  "value": "informatika"
+                },
+                {
+                  "key": "instansi",
+                  "value": "umsida"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "basic-auth",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "passwd",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "user",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "httpbin.org/basic-auth/user/passwd",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "basic-auth",
+                "user",
+                "passwd"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "bearer",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "tesbelajarpakaibearertoken",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "httpbin.org/bearer",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "bearer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "JWT",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer KyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3ODYwMDcxNjgsImV4cCI6MTc4NjAxMDc2OH0.xYxxmQGTdnvm-bcYC3W6t4NZ2QIwyDIl-fH8GrtDKl0",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/auth/me",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "response-header",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://httpbin.org/response-headers",
+              "protocol": "http",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "response-headers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "headers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://httpbin.org/headers",
+              "protocol": "http",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "headers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cache-etag",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/etag/askdsdjakdajda",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "etag",
+                "askdsdjakdajda"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "POST",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "nama",
+                  "type": "file",
+                  "uuid": "1a1047cc-f2de-4aa5-86f8-d90aa1554cac",
+                  "src": "/home/krsendev/Documents/Magang/Week 1/05 Agustus/tes/krisna"
+                },
+                {
+                  "key": "prodi",
+                  "type": "file",
+                  "uuid": "f2977abb-44af-4f4b-9b89-9c6327f6deb0",
+                  "src": "/home/krsendev/Documents/Magang/Week 1/05 Agustus/tes/informatika"
+                },
+                {
+                  "key": "instansi",
+                  "type": "file",
+                  "uuid": "bb4355c2-e46c-412d-adda-d47485add443",
+                  "src": "/home/krsendev/Documents/Magang/Week 1/05 Agustus/tes/umsida"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://httpbin.org/post",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "post"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "JSON-bertingkat",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Nomor-Pesanan",
+                "value": "020983131",
+                "type": "text"
+              },
+              {
+                "key": "X-Cabang",
+                "value": "Gelam, Candi",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"item\":[\n        {\n            \"sku\" : \"KR001\",\n            \"qty\" : \"50\",\n            \"harga\" : \"100000\"\n        },\n        {\n            \"sku\" : \"KR002\",\n            \"qty\" : \"100\",\n            \"harga\" : \"100000\"\n        },\n        {\n            \"sku\" : \"KR003\",\n            \"qty\" : \"20\",\n            \"harga\" : \"100000\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://httpbin.org/post",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "post"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "test-image",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "nama",
+                  "type": "file",
+                  "uuid": "1a1047cc-f2de-4aa5-86f8-d90aa1554cac",
+                  "src": "/home/krsendev/Documents/Magang/Week 1/05 Agustus/tes/krisna",
+                  "disabled": true
+                },
+                {
+                  "key": "prodi",
+                  "type": "file",
+                  "uuid": "f2977abb-44af-4f4b-9b89-9c6327f6deb0",
+                  "src": "/home/krsendev/Documents/Magang/Week 1/05 Agustus/tes/informatika",
+                  "disabled": true
+                },
+                {
+                  "key": "instansi",
+                  "type": "file",
+                  "uuid": "bb4355c2-e46c-412d-adda-d47485add443",
+                  "src": "/home/krsendev/Documents/Magang/Week 1/05 Agustus/tes/umsida",
+                  "disabled": true
+                },
+                {
+                  "key": "ekstra",
+                  "type": "file",
+                  "uuid": "14406bee-66be-42f6-85eb-30abbb68942e",
+                  "src": "/C:/Users/krisn/OneDrive/Gambar/Screenshots/Screenshot 2026-07-22 231451.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://httpbin.org/post",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "post"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "JWT",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"emilys\",\n    \"password\" : \"emilyspass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://dummyjson.com/auth/login",
+              "protocol": "https",
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PUT",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/put",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "put"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PATCH",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/patch",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "patch"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DELETE",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/delete",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "delete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "HEAD",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "HEAD",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/get",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "get"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "OPTION",
+      "item": [
+        {
+          "name": "httpbin",
+          "request": {
+            "method": "OPTIONS",
+            "header": [],
+            "url": {
+              "raw": "https://httpbin.org/headers",
+              "protocol": "https",
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "path": [
+                "headers"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "httpbin/anything",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "OPTIONS",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "nama",
+              "type": "file",
+              "uuid": "c6a1f85f-9957-4f1d-9b82-aa597f006b76",
+              "src": "/C:/Users/krisn/Downloads/krisna.txt"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://httpbin.org/anything?nama=krisna",
+          "protocol": "https",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "anything"
+          ],
+          "query": [
+            {
+              "key": "nama",
+              "value": "krisna",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "nama=krisna&instansi=umsida",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://httpbin.org/post",
+          "protocol": "https",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "post"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth_password_0pef",
+      "secret": true
+    }
+  ]
+}
